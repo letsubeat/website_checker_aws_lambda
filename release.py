@@ -3,11 +3,11 @@ import zipfile
 import boto3
 
 
-DEST_FOLDER = os.path.abspath('')
+DEST_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
 
 def create_zip():
-    checker_folder = os.path.abspath('checker')
+    checker_folder = os.path.join(DEST_FOLDER, 'checker')
     checker_zip = zipfile.ZipFile(os.path.join(DEST_FOLDER, 'checker.zip'), 'w')
     for folder, subfolders, files in os.walk(checker_folder):
         for file in files:

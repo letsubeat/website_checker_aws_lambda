@@ -4,6 +4,7 @@ import telegram
 from datetime import datetime, timedelta
 
 
+# http status ex)404, 500
 ERROR_CHECK_CODE = ['4', '5']
 
 
