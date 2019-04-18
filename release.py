@@ -16,7 +16,8 @@ session = boto3.Session(
 boto3.resource => session.resource
 '''
 
-S3_BUCKET_NAME = 'forum.adsocialite.kr.lambda'
+# your s3 bucket name is here
+S3_BUCKET_NAME = ''
 LAMBDA_FUNCTION_NAME = 'website_status_checker'
 
 
