@@ -5,6 +5,20 @@ import boto3
 
 DEST_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
+'''
+aws 자격 증명은 기본 aws console에 지정 되어 있는 프로필을 따릅니다.
+aws의 설정파일 credentials의 profile을 사용 하려면 boto3.session을 이용 해 주세요.
+
+session = boto3.Session(
+    profile_name='noel'
+)
+
+boto3.resource => session.resource
+'''
+
+S3_BUCKET_NAME = 'forum.adsocialite.kr.lambda'
+LAMBDA_FUNCTION_NAME = 'website_status_checker'
+
 
 def create_zip():
     checker_folder = os.path.join(DEST_FOLDER, 'checker')
@@ -18,7 +32,7 @@ def create_zip():
 
 
 def zip_s3_upload():
-    bucket_name = 'forum.adsocialite.kr.lambda'
+    bucket_name = S3_BUCKET_NAME
     key = os.path.join(DEST_FOLDER, 'checker.zip')
     output_name = 'checker.zip'
     s3 = boto3.resource('s3')
@@ -30,8 +44,8 @@ def refresh_lambda():
     zip_s3_upload()
     aws_lambda = boto3.client('lambda')
     response = aws_lambda.update_function_code(
-        FunctionName='website_status_checker',
-        S3Bucket='forum.adsocialite.kr.lambda',
+        FunctionName=LAMBDA_FUNCTION_NAME,
+        S3Bucket=S3_BUCKET_NAME,
         S3Key='checker.zip',
         Publish=True
     )
