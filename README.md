@@ -17,7 +17,7 @@ Checker.lambda_handler() -> Telegram bot message
 
 ## lambda 설정
 * 환경변수에 TELEGRAM_BOT_TOKEN_NUM와 TELEGRAM_BOT_TOKEN_KEY 를 정의 해 준다.
-ex) [742478084(NUM):AAHh3xU_RfPV29T4DK_0M3h5T55F5fnmBsU(KEY)]
+ex) [742478081(NUM):AAHh3xU_RfPV29T4DK_0M3h5T55F5fnnBsU(KEY)]
 
 * CloudWatch Events의 입력 구성 상수에 {"url": your web site url, "chat": your telegram chat channel id}
 
